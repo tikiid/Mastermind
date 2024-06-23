@@ -98,6 +98,8 @@ def start_messages():
     start_the_game = input("Press enter to start the game")
     os.system('cls')
 
+restart = False
+
 while True:
     # clear console
     os.system('cls')
@@ -107,18 +109,21 @@ while True:
     secret_combination = ''
     guess = ''
     all_attemps_list = [[], [], [], [], [], [], [], [], [], []]
-    restart = False
 
 
     # create the secret combination
     secret_combination = create_secret_combination()
     # print(secret_combination)
-    start_messages()
+    if not restart:
+        start_messages()
     
+
     while attempts < 11:
         
         if restart:
             print('Start a new game')
+            print()
+            restart = False
         
         display_board(all_attemps_list)
 
